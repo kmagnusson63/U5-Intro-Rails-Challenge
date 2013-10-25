@@ -1,0 +1,42 @@
+<h1>Listing products</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Stock quantity</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @products.each do |product| %>
+  <tr>
+    <td><%= product.title %></td>
+    <td><%= product.description %></td>
+    <td><%= product.price %></td>
+    <td><%= product.stock_quantity %></td>
+    <td><%= link_to 'Show', product %></td>
+    <td><%= link_to 'Edit', edit_product_path(product) %></td>
+    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+  </tr>
+<% end %>
+</table>
+<% av = 1 %>
+<p>Average price of products: <%= @products.sum(&:price)/@products.size %></p>
+
+<br />
+
+
+<!--     The average price of products in your database.
+    The maximum price of any product in your database.
+    The total number of unique products in your database.
+    The quantity of stock you are holding summed over all items. -->
+
+
+<%= link_to 'New Product', new_product_path %>
+<% 100.times do %>
+<p>Chunky Bacon</p>
+<% end %>
